@@ -11,5 +11,7 @@ url = "https://docs.google.com/spreadsheets/d/1kB0oWRD6vOnNHzilJdofS6AF1u-hBTHYP
 conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 #conn = st.connection("gsheets", type=GSheetsConnection)
 
-data = conn.read(spreadsheet=url, worksheet="258115823", usecols=list(range(15)))
-st.dataframe(data)
+df = conn.read(spreadsheet=url, worksheet="258115823", usecols=list(range(15)))
+
+
+st.dataframe(df)
