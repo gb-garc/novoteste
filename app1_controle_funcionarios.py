@@ -5,11 +5,15 @@ url = "https://docs.google.com/spreadsheets/d/1GswNpQuhhc6udp59clV5s6dDnBfFF91ro
 
 @st.cache(allow_output_mutation=True)
 def get_gsheets_connection():
+    # Initialize GSheetsConnection with credentials or API token if necessary
+    # For example:
+    # return GSheetsConnection(api_key="your_api_key_here")
     return GSheetsConnection()
 
 conn = get_gsheets_connection()
 df = conn.read(spreadsheet=url, worksheet="METRICAS", usecols=list(range(15)))
 st.dataframe(df)
+
 
 
 #import streamlit as st
