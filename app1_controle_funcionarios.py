@@ -1,9 +1,16 @@
 import streamlit as st
+import pandas as pd
 from streamlit_gsheets import GSheetsConnection
-url = "https://docs.google.com/spreadsheets/d/1GswNpQuhhc6udp59clV5s6dDnBfFF91rofaRbMsDdT0/edit#gid=704841034"
+
+# Create a connection object
 conn = st.connection("gsheets", type=GSheetsConnection)
-df = conn.read(spreadsheet=url, worksheet="METRICAS", usecols=list(range(15)))
-st.dataframe(df)
+url = "https://docs.google.com/spreadsheets/d/1GswNpQuhhc6udp59clV5s6dDnBfFF91rofaRbMsDdT0/edit#gid=704841034"
+google_sheets_table = conn.read(spreadsheet=url)
+dataframe = pd.DataFrame(google_sheets_table) # Convert google sheets table into python dataframe. Streamlit expects dataframes as input.
+
+#conn = st.connection("gsheets", type=GSheetsConnection)
+#df = conn.read(spreadsheet=url, worksheet="METRICAS", usecols=list(range(15)))
+#st.dataframe(df)
 
 
 #url = "https://docs.google.com/spreadsheets/d/1JDy9md2VZPz4JbYtRPJLs81_3jUK47nx6GYQjgU8qNY/edit?usp=sharing"
