@@ -6,9 +6,9 @@ from streamlit_gsheets import GSheetsConnection
 
 
     url = "https://docs.google.com/spreadsheets/d/1GswNpQuhhc6udp59clV5s6dDnBfFF91rofaRbMsDdT0/edit#gid=704841034"
-    conn = st.connection("gsheets", type=GSheetsConnection)    
+    conn = st.connection("gsheets", type=GSheetsConnection)
     df = conn.read(spreadsheet=url, worksheet="METRICAS", usecols=list(range(15)))
-  st.datafram(df)
+    st.dataframe(df)
 
 
 #url = "https://docs.google.com/spreadsheets/d/1JDy9md2VZPz4JbYtRPJLs81_3jUK47nx6GYQjgU8qNY/edit?usp=sharing"
