@@ -8,8 +8,8 @@ from streamlit_gsheets import GSheetsConnection
 #url = "https://docs.google.com/spreadsheets/d/1kB0oWRD6vOnNHzilJdofS6AF1u-hBTHYPP-ELi0GADo/edit#gid=258115823"
 url = "https://docs.google.com/spreadsheets/d/1kB0oWRD6vOnNHzilJdofS6AF1u-hBTHYPP-ELi0GADo/edit?usp=sharing"
 
-conn = st.experimental_connection("gsheets", type=GSheetsConnection)
-#conn = st.connection("gsheets", type=GSheetsConnection)
+#conn = st.experimental_connection("gsheets", type=GSheetsConnection)
+conn = st.connection("gsheets", type=GSheetsConnection)
 
 df = conn.read(spreadsheet=url, worksheet="258115823", usecols=list(range(15)))
 
