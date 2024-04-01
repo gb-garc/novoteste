@@ -36,9 +36,9 @@ colunas_selecionadas = st.sidebar.multiselect('Selecione as colunas:', colunas, 
 unique_index_values = df.index.unique().tolist()
 col3, col4, col5 = st.columns(3)
 valor_filtro2=col3.selectbox('Selecione uma solicitação para consultar os dados detalhados', unique_index_values)
-status_filtrar2 = col4.button('Selecionar solicitação')
+status_filtrar2 = col4.button('Ver detalhes')
 status_limpar2 = col5.button('Limpar pesquisa')
-st.divider()
+#st.divider()
 
 if status_filtrar2:
     texto1=valor_filtro2
