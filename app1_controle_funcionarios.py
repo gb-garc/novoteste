@@ -1,6 +1,14 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
+
+st.set_page_config(
+    page_title='Lista Completa de Solicitações - BIAPÓ',
+    layout='wide',
+    page_icon="https://biapo.com.br/wp-content/uploads/2018/08/logo-open-graph.jpg",
+    initial_sidebar_state='auto'
+)
+
 # se precisar: pip install st-gsheets-connection
 
 #url = "https://docs.google.com/spreadsheets/d/1JDy9md2VZPz4JbYtRPJLs81_3jUK47nx6GYQjgU8qNY/edit?usp=sharing"
