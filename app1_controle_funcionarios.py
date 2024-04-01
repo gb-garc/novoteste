@@ -33,13 +33,6 @@ colunas = list(df.columns)
 url2="https://docs.google.com/forms/d/e/1FAIpQLSfJBAV_3q-3EN1R0qmIMYXrJHydjG2l0YzeZGn03qw5BsxojQ/viewform"
 st.sidebar.link_button("Clique para preencher o formulário", url2)
 
-col1, col2 = st.sidebar.columns(2)
-col_filtro = col1.selectbox('Selecione a coluna', [c for c in colunas if c not in ['OBRA SOLICIT:']])
-valor_filtro = col2.selectbox('Selecione o valor', list(df[col_filtro].unique()))
-
-status_filtrar = col1.button('Filtrar')
-status_limpar = col2.button('Limpar')
-colunas_selecionadas = st.sidebar.multiselect('Selecione as colunas:', colunas, ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO', 'ORDEM'])
 
 unique_index_values = df.index.unique().tolist()
 col3, col4, col5 = st.columns(3)
@@ -59,6 +52,13 @@ if status_limpar2:
     
     
 st.divider()
+col1, col2 = st.columns(2)
+col_filtro = col1.selectbox('Selecione a coluna', [c for c in colunas if c not in ['OBRA SOLICIT:']])
+valor_filtro = col2.selectbox('Selecione o valor', list(df[col_filtro].unique()))
+
+status_filtrar = col1.button('Filtrar')
+status_limpar = col2.button('Limpar')
+colunas_selecionadas = st.sidebar.multiselect('Selecione as colunas:', colunas, ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO', 'ORDEM'])
 st.divider()
 st.markdown('# Lista Completa de Solicitações')
 
