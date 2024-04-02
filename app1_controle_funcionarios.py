@@ -52,7 +52,7 @@ col1, col2,col3 = st.columns(3)
 col_filtro = col1.selectbox('Selecione a coluna', [c for c in colunas if c not in ['OBRA SOLICIT:']])
 valor_filtro = col1.selectbox('Selecione o valor', list(df[col_filtro].unique()))
 
-status_limpar = button('Ver tabela completa')
+status_limpar = st.button('Ver tabela completa')
 status_filtrar = col2.button('Filtrar tabela')
 status_ocultar = col2.button('Ocultar tabela')
 colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas, ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO', 'ORDEM'])
