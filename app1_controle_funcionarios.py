@@ -16,7 +16,7 @@ url = "https://docs.google.com/spreadsheets/d/1kB0oWRD6vOnNHzilJdofS6AF1u-hBTHYP
 conn = st.experimental_connection("gsheets", type=GSheetsConnection)
 df = conn.read(spreadsheet=url,worksheet="258115823") #,index_col=2)
 df = df.drop(df.columns[[1,11,12,13,14,15]], axis=1)
-df = df.drop(df.columns[[12,13,14,15]], axis=1)
+df = df.drop(df.columns[[15]], axis=1)
 df.set_index(df.columns[1], inplace=True)
 df = df.dropna(subset=['SOLICITANTE'])
 df = df.sort_values(by='ORDEM', ascending=False)
