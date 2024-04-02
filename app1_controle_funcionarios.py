@@ -26,6 +26,7 @@ st.divider()
 # CRIAR BOTÃO QUE ABRE O FORMULÁRIO
 url2="https://docs.google.com/forms/d/e/1FAIpQLSfJBAV_3q-3EN1R0qmIMYXrJHydjG2l0YzeZGn03qw5BsxojQ/viewform"
 st.link_button("Clique aqui para abrir um formulário de todas as solicitações", url2)
+st.divider()
 
 # CRIAR BOTÕES PARA PESQUISA DE SOLICITAÇÃO ESPECÍFICA 
 colunas = list(df.columns)
@@ -48,13 +49,15 @@ if status_limpar2:
 st.divider()
 
 # CRIAR BOTÕES E MULTISELECT PARA EDITAR TABELA COM LISTA COMPLETA
-status_limpar = st.button('Ver tabela completa')
+col6, col7, col8=st.columns(3)
+status_limpar = col6.button('Ver tabela completa')
+status_filtrar = col7.button('Filtrar tabela')
+status_ocultar = col8.button('Ocultar tabela')
+
 col1, col2 = st.columns(2)
 col_filtro = col1.selectbox('Selecione a coluna', [c for c in colunas if c not in ['OBRA SOLICIT:']])
 valor_filtro = col1.selectbox('Selecione o valor', list(df[col_filtro].unique()))
 
-status_filtrar = col2.button('Filtrar tabela')
-status_ocultar = col2.button('Ocultar tabela')
 colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas, ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO', 'ORDEM'])
 st.divider()
 
