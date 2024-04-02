@@ -70,10 +70,10 @@ colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas[:12], ['T
 st.divider()
 if status_filtrar:
     st.cache_data.clear()
-    st.dataframe(df[df[col_filtro] == valor_filtro, colunas_selecionadas], height=800,width=800)
+    st.dataframe(df.loc[df[col_filtro] == valor_filtro, colunas_selecionadas], height=800,width=800)
 elif status_limpar:
     st.cache_data.clear()
-    st.dataframe(df.loc[colunas_selecionadas],height=800,width=800)
+    st.dataframe(df[colunas_selecionadas],height=800,width=800)
 elif status_ocultar:
     st.write("")
 else:
