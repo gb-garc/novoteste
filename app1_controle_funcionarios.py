@@ -63,8 +63,10 @@ valor_filtro = col2.selectbox('Selecione o valor', list(df[col_filtro].unique())
 colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas, ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO'])
 st.divider()
 if status_filtrar:
+    st.cache_data.clear()
     st.dataframe(df.loc[df[col_filtro] == valor_filtro, colunas_selecionadas], height=800,width=800)
 elif status_limpar:
+    st.cache_data.clear()
     st.dataframe(df[colunas_selecionadas],height=800,width=800)
 elif status_ocultar:
     st.write("")
