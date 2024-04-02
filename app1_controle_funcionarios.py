@@ -54,7 +54,7 @@ valor_filtro = col2.selectbox('Selecione o valor', list(df[col_filtro].unique())
 
 status_filtrar = col1.button('Filtrar')
 status_limpar = col2.button('Limpar')
-colunas_selecionadas = st.sidebar.multiselect('Selecione as colunas:', colunas, ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO', 'ORDEM'])
+colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas, ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO', 'ORDEM'])
 st.divider()
 
 if status_filtrar:
