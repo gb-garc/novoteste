@@ -57,13 +57,11 @@ status_limpar = col2.button('Limpar')
 colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas, ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO', 'ORDEM'])
 st.divider()
 
+st.markdown('# Lista Completa de Solicitações')
 if status_filtrar:
-    st.markdown('# Lista Completa de Solicitações')
     st.dataframe(df.loc[df[col_filtro] == valor_filtro, colunas_selecionadas], height=800,width=800)
 elif status_limpar:
-    st.markdown('# Lista Completa de Solicitações')
     st.dataframe(df[colunas_selecionadas],height=800,width=800)
 else:
-    write("")
     write("")
     
