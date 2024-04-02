@@ -11,6 +11,7 @@ st.set_page_config(
     initial_sidebar_state='auto'
 )
 
+# ----------------------------------------------------------------------
 # CONECTAR À GSHEETS E PREPARAR PLANILHA
 url = "https://docs.google.com/spreadsheets/d/1kB0oWRD6vOnNHzilJdofS6AF1u-hBTHYPP-ELi0GADo/edit?usp=sharing"
 conn = st.experimental_connection("gsheets", type=GSheetsConnection)
@@ -24,12 +25,14 @@ df = df.sort_values(by='ORDEM', ascending=False)
 st.divider()
 
 
+# ----------------------------------------------------------------------
 # CRIAR BOTÃO QUE ABRE O FORMULÁRIO
 st.markdown('# Formulário')
 url2="https://docs.google.com/forms/d/e/1FAIpQLSfJBAV_3q-3EN1R0qmIMYXrJHydjG2l0YzeZGn03qw5BsxojQ/viewform"
 st.link_button("Clique aqui para abrir um formulário de todas as solicitações", url2)
 st.divider()
 
+# ----------------------------------------------------------------------
 # CRIAR BOTÕES PARA PESQUISA DE SOLICITAÇÃO ESPECÍFICA 
 st.markdown('# Pesquisar solicitação')
 colunas = list(df.columns)
@@ -50,7 +53,8 @@ if status_limpar2:
 
 st.divider()
 
-df = df.drop(df.columns[[12,13,14,15,16,17]], axis=1)
+
+# ----------------------------------------------------------------------
 # CRIAR BOTÕES E MULTISELECT PARA EDITAR TABELA COM LISTA COMPLETA
 st.markdown('# Lista Completa de Solicitações')
 col6, col7, col8=st.columns(3)
@@ -66,10 +70,12 @@ colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas, ['TIPO',
 st.divider()
 if status_filtrar:
     st.cache_data.clear()
-    st.dataframe(df.loc[df[col_filtro] == valor_filtro, colunas_selecionadas], height=800,width=800)
+    df_simp = df.drop(df.columns[[12,13,14,15,16,17]], axis=1)
+    st.dataframe(df_simp.loc[df[col_filtro] == valor_filtro, colunas_selecionadas], height=800,width=800)
 elif status_limpar:
     st.cache_data.clear()
-    st.dataframe(df[colunas_selecionadas],height=800,width=800)
+    df_simp = df.drop(df.columns[[12,13,14,15,16,17]], axis=1)
+    st.dataframe(df_simp[colunas_selecionadas],height=800,width=800)
 elif status_ocultar:
     st.write("")
 else:
