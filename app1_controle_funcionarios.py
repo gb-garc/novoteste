@@ -3,10 +3,10 @@ from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 
 
+# layout='wide',
 # TÍTULO DA PÁGINA
 st.set_page_config(
     page_title='Lista Completa de Solicitações - BIAPÓ',
-    layout='wide',
     page_icon="https://biapo.com.br/wp-content/uploads/2018/08/logo-open-graph.jpg",
     initial_sidebar_state='auto'
 )
@@ -52,8 +52,8 @@ col1, col2,col3 = st.columns(3)
 col_filtro = col1.selectbox('Selecione a coluna', [c for c in colunas if c not in ['OBRA SOLICIT:']])
 valor_filtro = col1.selectbox('Selecione o valor', list(df[col_filtro].unique()))
 
-status_filtrar = col2.button('Filtrar')
-status_limpar = col2.button('Limpar')
+status_limpar = button('Ver tabela completa')
+status_filtrar = col2.button('Filtrar tabela')
 status_ocultar = col2.button('Ocultar tabela')
 colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas, ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO', 'ORDEM'])
 st.divider()
