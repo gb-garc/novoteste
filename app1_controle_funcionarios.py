@@ -50,8 +50,8 @@ st.divider()
 
 # CRIAR BOTÕES E MULTISELECT PARA EDITAR TABELA COM LISTA COMPLETA
 col6, col7, col8=st.columns(3)
-status_limpar = col6.button('Ver tabela completa')
-status_filtrar = col7.button('Filtrar tabela')
+status_limpar = col6.button(' Ver  tabela  completa ')
+status_filtrar = col7.button('Ver tabela com filtros')
 status_ocultar = col8.button('Ocultar tabela')
 
 col1, col2 = st.columns(2)
