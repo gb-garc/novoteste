@@ -66,16 +66,14 @@ col1, col2 = st.columns(2)
 col_filtro = col1.selectbox('Selecione a coluna', [c for c in colunas if c not in ['OBRA SOLICIT:']])
 valor_filtro = col2.selectbox('Selecione o valor', list(df[col_filtro].unique()))
 
-colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas, ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO'])
+colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas[:12], ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO'])
 st.divider()
 if status_filtrar:
     st.cache_data.clear()
-    df_simp = df.drop(df.columns[[12,13,14,15,16,17]], axis=1)
-    st.dataframe(df_simp.loc[df[col_filtro] == valor_filtro, colunas_selecionadas], height=800,width=800)
+    st.dataframe(df.loc[df[col_filtro] == valor_filtro, colunas_selecionadas], height=800,width=800)
 elif status_limpar:
     st.cache_data.clear()
-    df_simp = df.drop(df.columns[[12,13,14,15,16,17]], axis=1)
-    st.dataframe(df_simp[colunas_selecionadas],height=800,width=800)
+    st.dataframe(df.loc[colunas_selecionadas],height=800,width=800)
 elif status_ocultar:
     st.write("")
 else:
