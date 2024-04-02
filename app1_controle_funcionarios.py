@@ -30,7 +30,7 @@ st.link_button("Clique aqui para abrir um formulário de todas as solicitações
 # CRIAR BOTÕES PARA PESQUISA DE SOLICITAÇÃO ESPECÍFICA 
 colunas = list(df.columns)
 unique_index_values = df.index.unique().tolist()
-col4, col5, col6 = st.columns(3)
+col4, col5 = st.columns(2)
 valor_filtro2=col4.selectbox('Selecione uma solicitação para consultar os dados detalhados', unique_index_values)
 status_filtrar2 = col5.button('Ver detalhes')
 status_limpar2 = col5.button('Limpar pesquisa')
@@ -48,11 +48,11 @@ if status_limpar2:
 st.divider()
 
 # CRIAR BOTÕES E MULTISELECT PARA EDITAR TABELA COM LISTA COMPLETA
-col1, col2,col3 = st.columns(3)
+status_limpar = st.button('Ver tabela completa')
+col1, col2 = st.columns(2)
 col_filtro = col1.selectbox('Selecione a coluna', [c for c in colunas if c not in ['OBRA SOLICIT:']])
 valor_filtro = col1.selectbox('Selecione o valor', list(df[col_filtro].unique()))
 
-status_limpar = st.button('Ver tabela completa')
 status_filtrar = col2.button('Filtrar tabela')
 status_ocultar = col2.button('Ocultar tabela')
 colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas, ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO', 'ORDEM'])
