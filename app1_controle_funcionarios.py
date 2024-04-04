@@ -35,7 +35,8 @@ st.divider()
 # ----------------------------------------------------------------------
 # CRIAR BOTÕES PARA PESQUISA DE SOLICITAÇÃO ESPECÍFICA 
 st.markdown('# Pesquisar solicitação')
-colunas = list(df.columns)
+df_exib=df.drop(['EMAILP1','EMAILP2',EMAIL0],axis=1)
+colunas = list(df_exib.columns)
 unique_index_values = df.index.unique().tolist()
 col4, col5 = st.columns(2)
 valor_filtro2=col4.selectbox('Selecione uma solicitação para consultar os dados detalhados', unique_index_values)
@@ -44,7 +45,7 @@ status_limpar2 = col5.button('Limpar pesquisa')
 
 if status_filtrar2:
     texto1=valor_filtro2
-    series= df.loc[texto1]
+    series= df_exib.loc[texto1]
     df2=pd.DataFrame(series, index=colunas)
     st.dataframe(df2,height=500,width=800)
 
@@ -52,7 +53,6 @@ if status_limpar2:
     st.write("")
 
 st.divider()
-
 
 # ----------------------------------------------------------------------
 # CRIAR BOTÕES E MULTISELECT PARA EDITAR TABELA COM LISTA COMPLETA
@@ -68,14 +68,13 @@ valor_filtro = col2.selectbox('Selecione o valor', list(df[col_filtro].unique())
 #colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas[:11], ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO'])
 colunas_selecionadas=colunas
 st.divider()
+df_exib=df.drop(['EMAILP1','EMAILP2',EMAIL0],axis=1)
 if status_filtrar:
     st.cache_data.clear()
-    st.dataframe(df.loc[df[col_filtro] == valor_filtro, colunas_selecionadas], height=800,width=800)
+    st.dataframe(df_exib.loc[df_exib[col_filtro] == valor_filtro, colunas_selecionadas], height=800,width=800)
 elif status_limpar:
     st.cache_data.clear()
-    st.dataframe(df[colunas_selecionadas],height=800,width=800)
+    st.dataframe(df_exib[colunas_selecionadas],height=800,width=800)
 elif status_ocultar:
-    st.write("")
-else:
     st.write("")
     
