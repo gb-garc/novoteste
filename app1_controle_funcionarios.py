@@ -64,16 +64,16 @@ status_ocultar = col8.button('Ocultar tabela')
 
 col1, col2 = st.columns(2)
 col_filtro = col1.selectbox('Selecione a coluna', [c for c in colunas if c not in ['OBRA SOLICIT:']])
-valor_filtro = col2.selectbox('Selecione o valor', list(df[col_filtro].unique()))
+valor_filtro = col2.selectbox('Selecione o valor', list(df_exib[col_filtro].unique()))
 #colunas_selecionadas = st.multiselect('Selecione as colunas:', colunas[:11], ['TIPO', 'SOLICITANTE', 'SOLICITADO EM:', 'SITUACAO'])
 colunas_selecionadas=colunas
 st.divider()
 if status_filtrar:
     st.cache_data.clear()
-    st.dataframe(df.loc[df[col_filtro] == valor_filtro, colunas_selecionadas], height=800,width=800)
+    st.dataframe(df_exib.loc[df_exib[col_filtro] == valor_filtro, colunas_selecionadas], height=800,width=800)
 elif status_limpar:
     st.cache_data.clear()
-    st.dataframe(df[colunas_selecionadas],height=800,width=800)
+    st.dataframe(df_exib[colunas_selecionadas],height=800,width=800)
 elif status_ocultar:
     st.write("")
     
