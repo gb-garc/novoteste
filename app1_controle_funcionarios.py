@@ -35,7 +35,7 @@ st.divider()
 # ----------------------------------------------------------------------
 # CRIAR BOTÕES PARA PESQUISA DE SOLICITAÇÃO ESPECÍFICA 
 st.markdown('# Pesquisar solicitação')
-df_exib =df.drop(df.columns[[14,15,16,17,18]], axis=1)
+df_exib =df.drop(df.columns[[12,13,14,15,16,17,18]], axis=1)
 colunas = list(df_exib.columns)
 unique_index_values = df_exib.index.unique().tolist()
 col4, col5 = st.columns(2)
