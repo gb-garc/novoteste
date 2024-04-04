@@ -35,8 +35,9 @@ st.divider()
 # ----------------------------------------------------------------------
 # CRIAR BOTÕES PARA PESQUISA DE SOLICITAÇÃO ESPECÍFICA 
 st.markdown('# Pesquisar solicitação')
-colunas = list(df.columns)
-unique_index_values = df.index.unique().tolist()
+df_exib =df.drop(df.columns[[14,15,16,17,18]], axis=1)
+colunas = list(df_exib.columns)
+unique_index_values = df_exib.index.unique().tolist()
 col4, col5 = st.columns(2)
 valor_filtro2=col4.selectbox('Selecione uma solicitação para consultar os dados detalhados', unique_index_values)
 status_filtrar2 = col5.button('Ver detalhes')
@@ -44,7 +45,7 @@ status_limpar2 = col5.button('Limpar pesquisa')
 
 if status_filtrar2:
     texto1=valor_filtro2
-    series= df.loc[texto1]
+    series= df_exib.loc[texto1]
     df2=pd.DataFrame(series, index=colunas)
     st.dataframe(df2,height=500,width=800)
 
